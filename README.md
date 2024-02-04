@@ -43,4 +43,18 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 endif()
 ```
 
+Then, your C file needs to explicitly include the getopt header:
+
+```c
+#ifdef _WIN32
+#include <winpos.h>
+#endif
+```
+
 And that's it! you have added getopt to your windows project!
+
+(also provides functionality for some posix routines windows doesn't typically support, such as:
+    getline
+    S_ISREG
+    strncasecmp
+    strcasecmp)

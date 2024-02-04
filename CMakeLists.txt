@@ -2,8 +2,10 @@ cmake_minimum_required(VERSION 3.23.2)
 project(getopt_for_windows)
 set(TARGET_NAME ${PROJECT_NAME})
 
-add_library(${PROJECT_NAME} SHARED getopt.c)
-add_library(${PROJECT_NAME}_static STATIC getopt.c)
+set(SOURCE_LIST getopt.c getline.c)
+
+add_library(${PROJECT_NAME} SHARED ${SOURCE_LIST})
+add_library(${PROJECT_NAME}_static STATIC ${SOURCE_LIST})
 
 set(LIB_DIR "lib/${PROJECT_NAME}")
 set(TARGETS_EXPORT_NAME "${PROJECT_NAME}Targets")
@@ -25,7 +27,7 @@ install(
   COMPONENT libraries
   )
 
-install(FILES getopt.h
+install(FILES getopt.h winpos.h
   DESTINATION include
   COMPONENT headers
 )
